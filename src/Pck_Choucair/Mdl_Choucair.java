@@ -19,25 +19,53 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.sql.*;
-
-import com.ibm.as400.access.*;
-import com.ibm.as400.*;
-
+ 
+/*import com.ibm.as400.access.*;
+import com.ibm.as400.*;*/
+ 
 import javax.imageio.ImageIO;
+ 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-
+ 
+ 
+import org.openqa.selenium.*;
+//import com.gargoylesoftware.htmlunit.ElementNotFoundException;
+ 
 import Pck_Choucair.Web_Framework.Identificadores;
 
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
-import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+ 
+//PARA EL SET PROPERTY
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.JavascriptExecutor;
+ 
+
+ 
+/*
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+*/
+ 
 
 //ADICIONADAS PARA EL CARGAR DATOS
+import java.sql.ResultSetMetaData;
 import java.io.*;
+import java.util.*;
+//PARA EL SET PROPERTY
+//ADICIONADAS PARA EL CARGAR DATOS
 
 public class Mdl_Choucair {
 	public enum Funciones_Ch 
@@ -95,6 +123,8 @@ public class Mdl_Choucair {
 	        }
 	    }
 	}
+
+	private static final String HP_SolicitudCreHipVar = null;
 
 	public static void Fw_Ch(String strFunName,String  str_parametro1,String  str_parametro2,String str_parametroAdicional) throws SQLException, ClassNotFoundException, InterruptedException, IOException, AWTException
 	{
@@ -230,27 +260,32 @@ public class Mdl_Choucair {
 	}
 
 	
-	public static void CapturaPantalla(String Ruta, String NombreImagen){
-		try{
-		    Robot robot = new Robot();  
+	public static void CapturaPantalla(String Ruta, String NombreImagen) 
+	{
+		try {
+		    /*
+			Robot robot = new Robot();  
 		    BufferedImage image = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));  
-		    ImageIO.write(image, "png", new File(Ruta + "//" + NombreImagen + ".png"));
-		}catch(Exception e){System.out.println("Error tomando la captura de la pantalla Mdl_Choucair.CapturaPantalla en Ruta: " + Ruta + e.getMessage());
+		    ImageIO.write(image, "png", new File(Ruta + "//" + NombreImagen + ".png"));  
+		    */
+			
+			Date fechaActual = new Date();
+           // SimpleDateFormat formato = new SimpleDateFormat("ddMMyyyyHHmmss");
+            //formato.format(fechaActual);
+         WebDriver driver1 = new Augmenter().augment(Mdl_Variables.driver);
+         File file = ((TakesScreenshot) driver1).getScreenshotAs(OutputType.FILE);
+       
+         
+         FileUtils.copyFile(file, new File(Ruta + "//" + NombreImagen + ".png"));
+
+		    
+		} catch (Exception e) 
+		{
+			System.out.println("Error tomando la captura de la pantalla Mdl_Choucair.CapturaPantalla en Ruta: " + Ruta + e.getMessage());
 			Mdl_Evidenciamiento.Evidencia_Log(false, "");
 			Mdl_Evidenciamiento.Ingreso_Datos_Log();
 			Mdl_Variables.boolAction = 0;
 		}
-
-		/*try{
-			Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(Mdl_Variables.driver);
-	        final BufferedImage image = screenshot.getImage();
-	        ImageIO.write(image, "png", new File(Ruta + "//" + NombreImagen + ".png"));
-	    }catch(IOException e){
-	    	System.out.println("Error tomando la captura de la pantalla Mdl_Choucair.CapturaPantalla en Ruta: " + Ruta + e.getMessage());
-			Mdl_Evidenciamiento.Evidencia_Log(false, "");
-			Mdl_Evidenciamiento.Ingreso_Datos_Log();
-			Mdl_Variables.boolAction = 0;
-	    }*/
 	}
 
 	public static int Diferencia_Fechas(java.util.Date fecha1, java.util.Date fecha2){
@@ -282,24 +317,26 @@ public class Mdl_Choucair {
     /*Romer*/
     public static void Cerrar_Pantallas() throws IOException, InterruptedException{
         if(Mdl_Variables.boolAction == 1){
-            Mdl_Variables.driver.findElement(By.linkText("Desconectar")).click();
-            Thread.sleep(3000);
-            Mdl_Variables.driver.quit();
+                Mdl_Variables.driver.findElement(By.linkText("Desconectar")).click();
+                Thread.sleep(3000);
+                //Mdl_Variables.driver.quit();
         }else{
-            //System.out.println("ocurrión un error al cerrar sesión: " );
-        }
-
+                //System.out.println("ocurrió® µn error al cerrar sesió®º " );
+        } 
+        
+        
         switch(Web_Framework.GetValue(Mdl_Variables.Tipo_Aplicativo.toLowerCase())){
             case "chrome":
-                Runtime.getRuntime().exec("taskkill /F /IM chrome.exe");
+            	
+                    Runtime.getRuntime().exec("taskkill /F /IM chrome.exe");
                 Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe");
-                break;
+                    break;
             case "firefox":
-                Runtime.getRuntime().exec("taskkill /F /IM firefox.exe");                        //descomentar - RVO: 14032016
-                Runtime.getRuntime().exec("taskkill /F /IM firefoxdriver.exe");                //descomentar - RVO: 14032016
-                break;
+                    Runtime.getRuntime().exec("taskkill /F /IM firefox.exe");                        //descomentar - RVO: 14032016
+                    Runtime.getRuntime().exec("taskkill /F /IM firefoxdriver.exe");                //descomentar - RVO: 14032016
+                    break;
             default:
-                Runtime.getRuntime().exec("taskkill /F /IM iexplore.exe");
+                    Runtime.getRuntime().exec("taskkill /F /IM iexplore.exe");
                 Runtime.getRuntime().exec("taskkill /F /IM IEDriverServer.exe");
                 Runtime.getRuntime().exec("taskkill /F /IM safari.exe");
                 Runtime.getRuntime().exec("taskkill /F /IM safaridriver.exe");
@@ -307,7 +344,8 @@ public class Mdl_Choucair {
                 Runtime.getRuntime().exec("taskkill /F /IM operadriver.exe");
               break;
         }
-    }
+
+}
     
     static int keyInput[] = 
         {
@@ -379,7 +417,7 @@ public class Mdl_Choucair {
     	    robot.delay(10000);
     	   
     	    robot.keyPress(KeyEvent.VK_P);
-    	    robot.delay(150);
+    	    robot.delay(150); 
     	    robot.keyPress(KeyEvent.VK_0);
     	    robot.delay(150);
     	    robot.keyPress(KeyEvent.VK_1);
@@ -730,7 +768,7 @@ public class Mdl_Choucair {
     	    					break;
     	    				case novalue:
     	    					System.out.println("(Mdl_Choucair.esperaObjeto) No definiÃ³ correctamente el id del objeto: " + idObjeto);
-    	    		    		Mdl_Evidenciamiento.Evidencia_Log(false, "(Mdl_Choucair.esperaObjeto) No definió correctamente el id del objeto: " + idObjeto);
+    	    		    		Mdl_Evidenciamiento.Evidencia_Log(false, "(Mdl_Choucair.esperaObjeto) No definió £¯rrectamente el id del objeto: " + idObjeto);
     	    					Mdl_Evidenciamiento.Ingreso_Datos_Log();
     	    					Mdl_Variables.boolAction = 0;
     	    					return;

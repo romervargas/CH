@@ -71,7 +71,7 @@ public class Mdl_Datapool {
 	        	Mdl_Variables.P_Str_Script = Mdl_Variables.P_Str_Tabla + "_S";                                  
 	        }                                                                
 		
-            //AsignaciÛn de variables para Trabajar con internet explorer
+            //Asignaci√≥n de variables para Trabajar con internet explorer
         	Mdl_Variables.CurBrowser = "ie";
 
             
@@ -114,7 +114,7 @@ public class Mdl_Datapool {
 				//Mdl_Variables.Ruta_Aplicativo = "C:\\evidencia";
 			}else{
 				//Mdl_Variables.Ruta_Aplicativo = "C:\\evidencia";
-				//System.out.println("No se encontrÛ la ruta del aplicativo " + Mdl_Variables.P_Str_Aplicativo);
+				//System.out.println("No se encontr√≥ la ruta del aplicativo " + Mdl_Variables.P_Str_Aplicativo);
 				//return;
 			}
 			
@@ -122,10 +122,10 @@ public class Mdl_Datapool {
 //            //Limpieza del datapool y la evidencia no usada 
 //            //si ponemos conecta sql en true borra las imagenes del disco duro y limplia los registros
 //
-//			//Variable creada con el fÌn de eliminar archivos del disco
+//			//Variable creada con el f√≠n de eliminar archivos del disco
 			File ArchivosDisco;
 //			//------------------------------------------------------------------------------------------------------------------------------------------------------------
-//			//Si se requiere generar html de nuevo, poner un break point en la lÌnea           Set fso = CreateObject("Scripting.FileSystemObject")                  ejecutar el script y en la ventana de 
+//			//Si se requiere generar html de nuevo, poner un break point en la l√≠nea           Set fso = CreateObject("Scripting.FileSystemObject")                  ejecutar el script y en la ventana de 
 //			//Comando escribir                 generar_html "aaa", "bbb"                     cambiando aaa por responsable y bbb por arquitecto
 //			//------------------------------------------------------------------------------------------------------------------------------------------------------------
 //			************************************************
@@ -142,7 +142,7 @@ public class Mdl_Datapool {
                     while(Mdl_Variables.Rst_Limpia_Datos.next()){
                         ArchivosDisco = new File(Mdl_Variables.Ruta_Aplicativo + "\\" + Mdl_Variables.Rst_Limpia_Datos.getString("IMAGEN"));
                         if(!ArchivosDisco.delete()){
-                            //System.out.println("No se eliminÛ el archivo: " + Mdl_Variables.Ruta_Aplicativo + "\\" + Mdl_Variables.Rst_Limpia_Datos.getString("IMAGEN"));
+                            //System.out.println("No se elimin√≥ el archivo: " + Mdl_Variables.Ruta_Aplicativo + "\\" + Mdl_Variables.Rst_Limpia_Datos.getString("IMAGEN"));
                         }
                     }
                     if (Mdl_Choucair.TRATA_NULL(Mdl_Variables.P_Str_CasosExec,"")!= "") //(Mdl_Variables.P_Str_CasosExec!= null)                
@@ -158,7 +158,6 @@ public class Mdl_Datapool {
                     }
                 }
                 Mdl_Variables.Rst_Log.absolute(0);
-
                 if(Mdl_Variables.Cnn.prepareStatement("UPDATE " + Mdl_Variables.P_Str_Datos + " SET UTILIZADO = 0, HORA = 0, TIEMPO_EJECUCION_CASO = 0").executeUpdate() == 0){
                     //System.out.println("No se encotraron datos a acutaliar en " + Mdl_Variables.P_Str_Datos);
                 }
@@ -180,7 +179,7 @@ public class Mdl_Datapool {
                     while(Mdl_Variables.Rst_Limpia_Datos.next()){
                         ArchivosDisco = new File(Mdl_Variables.Ruta_Aplicativo + "\\" + Mdl_Variables.Rst_Limpia_Datos.getString("IMAGEN"));
                         if(!ArchivosDisco.delete()){
-                            //System.out.println("No se eliminÛ el archivo: " + Mdl_Variables.Ruta_Aplicativo + "\\" + Mdl_Variables.Rst_Limpia_Datos.getString("IMAGEN"));
+                            //System.out.println("No se elimin√≥ el archivo: " + Mdl_Variables.Ruta_Aplicativo + "\\" + Mdl_Variables.Rst_Limpia_Datos.getString("IMAGEN"));
                         }
                     }
                     if(Mdl_Variables.Cnn.prepareStatement("DELETE FROM TBL_LOG_DETALLE WHERE INDICE = " + Mdl_Variables.Rst_Tabla.getString("ID_CASO") + " AND ID_MAESTRO = " + Mdl_Variables.Rst_Log.getString("ID_MAESTRO") + " AND CICLO ='" + Mdl_Variables.P_Str_Ciclo + "' AND VERSION = '" + Version_Aplicativo + "'").executeUpdate() == 0){
@@ -208,7 +207,7 @@ public class Mdl_Datapool {
     // Procedure : SCHEDULE
     // Author    : JAB
     // Date      : 27/06/2012
-    // Purpose   : Procedimiento que busca ejecuciones programadas para la m·quina
+    // Purpose   : Procedimiento que busca ejecuciones programadas para la m√°quina
     //---------------------------------------------------------------------------------------
 	   public static void Schedule(String Str_DataPool ,String Str_BasedeDatos ,String Str_RutaRepositorio ,String Str_Usuario ,String Str_Password ,String Str_Servidor )
 	    {
@@ -222,10 +221,10 @@ public class Mdl_Datapool {
 
 		    Conectar_Dp(Str_DataPool, Str_RutaRepositorio, Str_BasedeDatos, Str_Usuario, Str_Password, Str_Servidor);
 		    
-		    //Consulta ejecuciones pendientes en la tabla schedule, teniendo en cuenta la m·quina desde la cu·l se ejecuta
+		    //Consulta ejecuciones pendientes en la tabla schedule, teniendo en cuenta la m√°quina desde la cu√°l se ejecuta
 		    Mdl_Variables.Rst_QaPendienes = Mdl_Variables.Cnn.prepareCall("SELECT * FROM TBL_SCHEDULE_EXEC  WHERE EXECUTAR = 'TRUE' AND EXECUTADO = 'FALSE' AND upper(MAQUINA)='" + Mdl_Variables.P_Str_NombreMaquina.trim().toUpperCase() + "' ORDER BY DATA_EXEC, HORA_EXEC, INDICE").executeQuery();
 
-	        //Valida que existan scripts pendientes por ejecuciÛn
+	        //Valida que existan scripts pendientes por ejecuci√≥n
 	        if (Mdl_Variables.Rst_QaPendienes.next() == true) {
 	        	
 	        	
@@ -235,9 +234,10 @@ public class Mdl_Datapool {
 	            	Mdl_Variables.dtFechaInicio = new Date();
 
 	            	//linea comentariarar cuando se haga debug.
-            		Mdl_Variables.Cnn.prepareCall( "UPDATE TBL_SCHEDULE_EXEC SET EXECUTADO = 'TRUE', FECHA_INICIO_EXEC = '" + Mdl_Variables.dtFechaInicio + "' WHERE INDICE = " + Mdl_Variables.Rst_QaPendienes.getString("INDICE")).execute();
-
-			        //AsignaciÛn, de las variables para keyword driver
+	            	 
+	            	Mdl_Variables.Cnn.prepareCall( "UPDATE TBL_SCHEDULE_EXEC SET EXECUTADO = 'TRUE', FECHA_INICIO_EXEC = '" + Mdl_Variables.dtFechaInicio + "' WHERE INDICE = " + Mdl_Variables.Rst_QaPendienes.getString("INDICE")).execute();
+	              
+			        //Asignaci√≥n, de las variables para keyword driver
 	            	Mdl_Variables.Rst_Script = Mdl_Variables.Cnn.prepareCall( "SELECT * FROM TBL_SCRIPT WHERE SCRIPT= '" + Mdl_Variables.Rst_QaPendienes.getString("SCRIPT") + "'").executeQuery();
 	            	if(Mdl_Variables.Rst_Script.next()){
 		            	Mdl_Variables.P_Str_Tabla = Mdl_Variables.Rst_Script.getString("SCRIPT");

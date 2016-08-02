@@ -16,7 +16,9 @@ public class Mdl_Keyboard {
                 type(character);
         }
     }
-
+    public static void doType(int... keyCodes){
+    	doType(keyCodes, 0,keyCodes.length);
+    }
     public static void type(char character) {
         switch (character) {
         case 'a': doType(KeyEvent.VK_A); break;
@@ -121,9 +123,7 @@ public class Mdl_Keyboard {
         }
     }
 
-    public static void doType(int... keyCodes) {
-        doType(keyCodes, 0, keyCodes.length);
-    }
+
 	//FAVC20130517
 	public static void TeclaAbajo(){
 		doType(KeyEvent.VK_DOWN);

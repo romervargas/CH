@@ -34,7 +34,7 @@ public class Mdl_Evidenciamiento
     public static String NombreEvd;  
 
 	/** CAA_2013-02-04 Begin
-	 * Crea la estructura de las carpetas para la generación de evidencia en la ruta indicada por el parametro
+	 * Crea la estructura de las carpetas para la generaciÃ³n de evidencia en la ruta indicada por el parametro
 	 * @param ruta : La ruta se esta armando antes de llamar esta rutina con Ruta_Aplicativo + Vrb_VersionAplicativo + P_Str_Ciclo 
 	 */
 	public static void crearRutaEvidencia(String ruta){
@@ -44,7 +44,7 @@ public class Mdl_Evidenciamiento
 		//file.mkdirs();
 		//file = new File(ruta + "\\7. Descripcion");
 		//file.mkdirs();
-		//file = new File(ruta + "\\8. Menús");
+		//file = new File(ruta + "\\8. MenÃºs");
 		//file.mkdirs();
 		//file = new File(ruta + "\\9. Diagramas");
 		//file.mkdirs();	 	
@@ -95,7 +95,7 @@ public class Mdl_Evidenciamiento
 			//Mdl_Variables.Descripcion_Acierto_Error = "";
 		}catch(Exception ex)
 		{
-			System.out.println("Ocurrió un error en Mdl_Evidenciamiento.Ingreso_Datos_Log: " + ex.getMessage());
+			System.out.println("OcurriÃ³ un error en Mdl_Evidenciamiento.Ingreso_Datos_Log: " + ex.getMessage());
 		}
 	}
 	public static void Evidencia_Log(boolean blnResultado, String Descripcion_Adicional )
@@ -126,7 +126,7 @@ public class Mdl_Evidenciamiento
 			}
 		}catch(Exception ex)
 		{
-			System.out.println("Ocurrió un error en Mdl_Evidenciamiento: " + ex.getMessage());
+			System.out.println("OcurriÃ³ un error en Mdl_Evidenciamiento: " + ex.getMessage());
 		}
 	}
 	public static int Valida_Orientacion(boolean BlnResultado)
@@ -137,12 +137,12 @@ public class Mdl_Evidenciamiento
 			{
 				if (Mdl_Variables.Rst_Tabla.getString("ACIERTO_ERROR").contentEquals("0"))
 				{
-					Mdl_Evidenciamiento.Evidencia_Log(false, "Error en la Validación.");
+					Mdl_Evidenciamiento.Evidencia_Log(false, "Error en la ValidaciÃ³n.");
 					//Mdl_Evidenciamiento.Ingreso_Datos_Log();
 					Mdl_Variables.boolAction = 2;
 					return 0;
 				}else{
-					Mdl_Evidenciamiento.Evidencia_Log(true, "Validación Satisfactoria.");
+					Mdl_Evidenciamiento.Evidencia_Log(true, "ValidaciÃ³n Satisfactoria.");
 					//Mdl_Evidenciamiento.Ingreso_Datos_Log();
 					Mdl_Variables.boolAction = 1;
 					return 1;
@@ -152,12 +152,12 @@ public class Mdl_Evidenciamiento
 			{
 				if (Mdl_Variables.Rst_Tabla.getString("ACIERTO_ERROR").contentEquals("0"))
 				{	
-					Mdl_Evidenciamiento.Evidencia_Log(true, "Validación Satisfactoria.");
+					Mdl_Evidenciamiento.Evidencia_Log(true, "ValidaciÃ³n Satisfactoria.");
 					//Mdl_Evidenciamiento.Ingreso_Datos_Log();
 					Mdl_Variables.boolAction = 1;
 					return 1;
 				}else{
-					Mdl_Evidenciamiento.Evidencia_Log(false, "Error en la Validación.");
+					Mdl_Evidenciamiento.Evidencia_Log(false, "Error en la ValidaciÃ³n.");
 					//Mdl_Evidenciamiento.Ingreso_Datos_Log();
 					Mdl_Variables.boolAction = 2;
 					return 0;
@@ -169,9 +169,9 @@ public class Mdl_Evidenciamiento
 		}
 	}
 	
-	/** Crea en el repositorio el html de evidencia que contendrá la prueba
+	/** Crea en el repositorio el html de evidencia que contendrÃ¡ la prueba
 	 * 
-	 * @param strAutomatizador Persona responsable de la ejecución y estabilización del script
+	 * @param strAutomatizador Persona responsable de la ejecuciÃ³n y estabilizaciÃ³n del script
 	 * @param strResponsable Persona responsable de la prueba
 	 * @throws SQLException 
 	 */
@@ -203,7 +203,7 @@ public class Mdl_Evidenciamiento
 		try {
 			Mdl_Variables.Rst_Evidencia = Mdl_Variables.Cnn.prepareCall(Vrb_Dt_ConteoErrores).executeQuery();
 		} catch (SQLException e) {
-			System.out.println("Ocurrió un error consultando los aciertos en TBL_LOG_DETALLE: " + e.getMessage());
+			System.out.println("OcurriÃ³ un error consultando los aciertos en TBL_LOG_DETALLE: " + e.getMessage());
 			return;
 		}
 		try {
@@ -215,7 +215,7 @@ public class Mdl_Evidenciamiento
 					//continua con el proceso
 				}
 			}else{
-				System.out.println("Error consultando los aciertos: la consulta no trajo ningún resultado.");
+				System.out.println("Error consultando los aciertos: la consulta no trajo ningÃºn resultado.");
 				return;
 			}
 		} catch (SQLException e) {
@@ -233,7 +233,7 @@ public class Mdl_Evidenciamiento
 		try {
 			Mdl_Variables.Rst_Evidencia = Mdl_Variables.Cnn.prepareCall(Vrb_Dt_ConteoAciertos).executeQuery();
 		} catch (SQLException e) {
-			System.out.println("Ocurrió un error consultando los errores en TBL_LOG_DETALLE: " + e.getMessage());
+			System.out.println("OcurriÃ³ un error consultando los errores en TBL_LOG_DETALLE: " + e.getMessage());
 			return;
 		}
 		try {
@@ -245,7 +245,7 @@ public class Mdl_Evidenciamiento
 					//continua con el proceso
 				}
 			}else{
-				System.out.println("Error consultando los errores: la consulta no trajo ningún resultado.");
+				System.out.println("Error consultando los errores: la consulta no trajo ningÃºn resultado.");
 				return;
 			}
 		} catch (SQLException e) {
@@ -276,7 +276,7 @@ public class Mdl_Evidenciamiento
 		MyFile.println("</head>");
 		MyFile.println("<FRAMESET cols=\"15%,*\" FRAMEBORDER=\"\">");
 		MyFile.println("<FRAMESET rows=\"77%,*\" border = 0>");
-		MyFile.println("<FRAME SRC=\"8. Menús/" + NombreEvd + "\" name=\"Menu\">");
+		MyFile.println("<FRAME SRC=\"8. MenÃºs/" + NombreEvd + "\" name=\"Menu\">");
 		MyFile.println("<FRAME SRC=\"../../Recursos/planeta.png\" name = \"imagen\">");
 		MyFile.println("</FRAMESET>");
 		MyFile.println("<FRAMESET rows=\"80%,*\">");
@@ -362,11 +362,11 @@ public class Mdl_Evidenciamiento
 		// Crear Archivos de evidencias
 		// CAA_2013-01-04 Begin 
 		try {
-		 // fw = new FileWriter(Mdl_Variables.Ruta_Aplicativo + "\\8. Menús\\" + NombreEvd);
-			fw = new FileWriter( Mdl_Variables.Ruta_Evidencia + "\\8. Menús\\" + NombreEvd );
+		 // fw = new FileWriter(Mdl_Variables.Ruta_Aplicativo + "\\8. MenÃºs\\" + NombreEvd);
+			fw = new FileWriter( Mdl_Variables.Ruta_Evidencia + "\\8. MenÃºs\\" + NombreEvd );
 		} catch (IOException e) {
-		 // System.out.println("Error generando el archivo " + Mdl_Variables.Ruta_Aplicativo + "\\8. Menús\\" + NombreEvd + ": " + e.getMessage());
-			System.out.println("Error generando el archivo " + Mdl_Variables.Ruta_Evidencia + "\\8. Menús\\" + NombreEvd + ": " + e.getMessage());
+		 // System.out.println("Error generando el archivo " + Mdl_Variables.Ruta_Aplicativo + "\\8. MenÃºs\\" + NombreEvd + ": " + e.getMessage());
+			System.out.println("Error generando el archivo " + Mdl_Variables.Ruta_Evidencia + "\\8. MenÃºs\\" + NombreEvd + ": " + e.getMessage());
 			return;
 		}
 		// CAA_2013-01-04 End
@@ -375,7 +375,7 @@ public class Mdl_Evidenciamiento
 	    MyFile = new PrintWriter(bw);
 		MyFile.println("<html>");
 		MyFile.println("<head>");
-		MyFile.println("<title>Menú</title>");
+		MyFile.println("<title>MenÃº</title>");
 		MyFile.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../Recursos/sdmenu/sdmenu.css\" />"); // CAA_2013-01-04
 		MyFile.println("<script type=\"text/javascript\" src=\"../../../Recursos/sdmenu/sdmenu.js\">"); // CAA_2013-01-04
 		MyFile.println("</script>");
@@ -393,8 +393,8 @@ public class Mdl_Evidenciamiento
 		MyFile.println("<body> </table>");
 		MyFile.println("<div style=\"float: left\" id=\"my_menu\" class=\"sdmenu\">");
 		MyFile.println("<div>");
-		MyFile.println("<span>Información</span>");
-		MyFile.println("<a onmouseover=\"parent.parent.frames[2].location='../6. Encabezado/" + NombreEvd + "';parent.parent.frames[3].location='../../../Recursos/Sin Datos.html'\">Información</a>");
+		MyFile.println("<span>InformaciÃ³n</span>");
+		MyFile.println("<a onmouseover=\"parent.parent.frames[2].location='../6. Encabezado/" + NombreEvd + "';parent.parent.frames[3].location='../../../Recursos/Sin Datos.html'\">InformaciÃ³n</a>");
 		MyFile.println("</div>");
 		MyFile.println("<div>");
 		MyFile.println("<span>Casos Ok</span>");
@@ -413,7 +413,7 @@ public class Mdl_Evidenciamiento
 		try {
 			Mdl_Variables.Rst_Evidencia = Mdl_Variables.Cnn.prepareCall(Vrb_Dt_ConteoErrores).executeQuery();
 		} catch (SQLException e) {
-			System.out.println("Ocurrió un error consultando los aciertos, en TBL_LOG_DETALLE: " + e.getMessage());
+			System.out.println("OcurriÃ³ un error consultando los aciertos, en TBL_LOG_DETALLE: " + e.getMessage());
 			return;
 		}
 		try {
@@ -424,8 +424,8 @@ public class Mdl_Evidenciamiento
 				if(rsStepName.next()){
 					strStepName = rsStepName.getString(1);
 				}else{
-					//esto nunca debería darse pero igual se pone la validación
-					System.out.println("No se encontró el nombre del paso en la tabla " + Mdl_Variables.P_Str_Datos + ", para el caso con id " + Mdl_Variables.Rst_Evidencia.getString("INDICE"));
+					//esto nunca deberÃ­a darse pero igual se pone la validaciÃ³n
+					System.out.println("No se encontrÃ³ el nombre del paso en la tabla " + Mdl_Variables.P_Str_Datos + ", para el caso con id " + Mdl_Variables.Rst_Evidencia.getString("INDICE"));
 					return;
 				}
 				MyFile.println("<a onmouseover=\"parent.parent.frames[2].location='../1. Evidencias/" + Mdl_Variables.Rst_Evidencia.getString("INDICE") + "_" + NombreEvd + "';parent.parent.frames[3].location='../7. Descripcion/" + Mdl_Variables.Rst_Evidencia.getString("INDICE") + "_" + NombreEvd +"'\">" + Mdl_Variables.Rst_Evidencia.getString("INDICE") + " : " + strStepName + "</a>");
@@ -436,7 +436,7 @@ public class Mdl_Evidenciamiento
 				//continua con el proceso
 			}
 		} catch (SQLException e) {
-			System.out.println("Ocurrió un error inesperado consultando los aciertos: " + e.getMessage());
+			System.out.println("OcurriÃ³ un error inesperado consultando los aciertos: " + e.getMessage());
 			return;
 		}
 		MyFile.println("</div>");
@@ -457,7 +457,7 @@ public class Mdl_Evidenciamiento
 		try {
 			Mdl_Variables.Rst_Evidencia = Mdl_Variables.Cnn.prepareCall(Vrb_Dt_ConteoErrores).executeQuery();
 		} catch (SQLException e) {
-			System.out.println("Ocurrió un error consultando los errores, en TBL_LOG_DETALLE: " + e.getMessage());
+			System.out.println("OcurriÃ³ un error consultando los errores, en TBL_LOG_DETALLE: " + e.getMessage());
 			return;
 		}
 		try {
@@ -468,8 +468,8 @@ public class Mdl_Evidenciamiento
 				if(rsStepName.next()){
 					strStepName = rsStepName.getString(1);
 				}else{
-					//esto nunca debería darse pero igual se pone la validación
-					System.out.println("No se encontró el Nombre del paso en la tabla " + Mdl_Variables.P_Str_Datos + ", para el caso con id " + Mdl_Variables.Rst_Evidencia.getString("INDICE"));
+					//esto nunca deberÃ­a darse pero igual se pone la validaciÃ³n
+					System.out.println("No se encontrÃ³ el Nombre del paso en la tabla " + Mdl_Variables.P_Str_Datos + ", para el caso con id " + Mdl_Variables.Rst_Evidencia.getString("INDICE"));
 					return;
 				}
 				MyFile.println("<a onmouseover=\"parent.parent.frames[2].location='../1. Evidencias/" + Mdl_Variables.Rst_Evidencia.getString("INDICE") + "_" + NombreEvd + "';parent.parent.frames[3].location='../7. Descripcion/" + Mdl_Variables.Rst_Evidencia.getString("INDICE") + "_" + NombreEvd +"'\">" + Mdl_Variables.Rst_Evidencia.getString("INDICE") + " : " + strStepName + "</a>");
@@ -480,13 +480,13 @@ public class Mdl_Evidenciamiento
 				//continua con el proceso
 			}
 		} catch (SQLException e) {
-			System.out.println("Ocurrió un error inesperado consultando los errores: " + e.getMessage());
+			System.out.println("OcurriÃ³ un error inesperado consultando los errores: " + e.getMessage());
 			return;
 		}
 		MyFile.println("</div>");
 		MyFile.println("<div>");
 		MyFile.println("<span>Graficos</span>");
-		MyFile.println("<a onmouseover=\"parent.parent.frames[2].location='../9. Diagramas/" + NombreEvd + "';parent.parent.frames[3].location='../../../Recursos/Sin Datos.html'\">Gráficos</a>");
+		MyFile.println("<a onmouseover=\"parent.parent.frames[2].location='../9. Diagramas/" + NombreEvd + "';parent.parent.frames[3].location='../../../Recursos/Sin Datos.html'\">GrÃ¡ficos</a>");
 		MyFile.println("</div>");
 		MyFile.println("</div>");
 		MyFile.println("</body>");
@@ -508,7 +508,7 @@ public class Mdl_Evidenciamiento
 		try {
 			Mdl_Variables.Rst_Evidencia = Mdl_Variables.Cnn.prepareCall(Str_Evidencias).executeQuery();
 		} catch (SQLException e) {
-			System.out.println("Ocurrió un error consultando las evidencias en TBL_LOG_DETALLE: " + e.getMessage());
+			System.out.println("OcurriÃ³ un error consultando las evidencias en TBL_LOG_DETALLE: " + e.getMessage());
 			return;
 		}
 		try {
@@ -642,7 +642,7 @@ public class Mdl_Evidenciamiento
 		try {
 			Mdl_Variables.Rst_Evidencia = Mdl_Variables.Cnn.prepareCall(Str_Evidencias).executeQuery();
 		} catch (SQLException e) {
-			System.out.println("Ocurrió un error Consultando las evidencias en TBL_LOG_DETALLE: " + e.getMessage());
+			System.out.println("OcurriÃ³ un error Consultando las evidencias en TBL_LOG_DETALLE: " + e.getMessage());
 			return;
 		}
 		//Evd Error
@@ -745,7 +745,7 @@ public class Mdl_Evidenciamiento
 				
 				ResultSetMetaData RSMD_Edatos = RS_Edatos.getMetaData();
 				while(RS_Edatos.next()){
-					MyFile_Datos.println("<TR><TD><font color=red style=\"font-family: Arial;font-size: 14px;\"><b>Mensaje ejecución : </b>"+mensaje_log +"</i></font>");
+					MyFile_Datos.println("<TR><TD><font color=red style=\"font-family: Arial;font-size: 14px;\"><b>Mensaje ejecuciÃ³n : </b>"+mensaje_log +"</i></font>");
 //                  
 					for(int a = 1 ; a <= RSMD_Edatos.getColumnCount() ; a++)
 //						if(!RSMD_Edatos.getColumnName(a).equalsIgnoreCase("INDEX") && !RSMD_Edatos.getColumnName(a).equalsIgnoreCase("EJECUCION_AC_ERR") && !RSMD_Edatos.getColumnName(a).equalsIgnoreCase("DESCRIPCION_ACIERTO") && !RSMD_Edatos.getColumnName(a).equalsIgnoreCase("CASO_FELIZ") && !RSMD_Edatos.getColumnName(a).equalsIgnoreCase("ESTADO_CASO") && !RSMD_Edatos.getColumnName(a).equalsIgnoreCase(" ESTADO_CASO") && !RSMD_Edatos.getColumnName(a).equalsIgnoreCase("HORA") && !RSMD_Edatos.getColumnName(a).equalsIgnoreCase("UTILIZADO") && !RSMD_Edatos.getColumnName(a).equalsIgnoreCase("ID_CASO") && RS_Edatos.getString(a) != null && !RS_Edatos.getString(a).equalsIgnoreCase("NULL") && !RS_Edatos.getString(a).equalsIgnoreCase("<IGNORE>"))
@@ -773,7 +773,7 @@ public class Mdl_Evidenciamiento
 			System.out.println("Error recorriendo las evidencias: " + e.getMessage());
 			return;
 		}
-		//Creación Diagrama
+		//CreaciÃ³n Diagrama
 		// CAA_2013-01-04 Begin 
 		try {
 		 // fw = new FileWriter(Mdl_Variables.Ruta_Aplicativo + "\\9. Diagramas\\"  + NombreEvd);
@@ -789,7 +789,7 @@ public class Mdl_Evidenciamiento
 	    PrintWriter MyFile_Diagrama = new PrintWriter(bw);
 		MyFile_Diagrama.println("<HTML>");
 		MyFile_Diagrama.println("<HEAD>");
-		MyFile_Diagrama.println("<TITLE>" + Mdl_Variables.P_Str_Tabla + "</TITLE>	<table border = 1 align = center><td><b>Consolidado para la versión " + Mdl_Variables.Vrb_VersionAplicativo + "</b></td><td>");
+		MyFile_Diagrama.println("<TITLE>" + Mdl_Variables.P_Str_Tabla + "</TITLE>	<table border = 1 align = center><td><b>Consolidado para la versiÃ³n " + Mdl_Variables.Vrb_VersionAplicativo + "</b></td><td>");
 		MyFile_Diagrama.println("<style type=\"text/css\">");
 		
 		MyFile_Diagrama.println("	body {");
@@ -827,7 +827,7 @@ public class Mdl_Evidenciamiento
 						"WHERE DET.TIPO_LOG  in(2,4,6) AND MAS.NOMBRE_TABLA like '" + Mdl_Variables.P_Str_Tabla + "' AND DET.VERSION = '" + Mdl_Variables.Vrb_VersionAplicativo + "'  and DET.CICLO = '" + Mdl_Variables.Rst_Evidencia.getString(1) +"') ").executeQuery();
 				if(rsAux.next())
 					strAux = rsAux.getString(1);
-				else{ //esto no debería presentarse pero se valida
+				else{ //esto no deberÃ­a presentarse pero se valida
 					System.out.println("No se encontraron datos en la consulta. Valores de la consulta: " + Mdl_Variables.P_Str_Tabla + ", " + Mdl_Variables.Vrb_VersionAplicativo + ", " + Mdl_Variables.Rst_Evidencia.getString(1));
 					return;
 				}
@@ -1112,7 +1112,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 	    {
 	    /*
 	     * '''''''''''''''logs reporter''''''''''''''''''''''''''
-	        'LogInfo("Información") 'Entrega un mensaje de Información
+	        'LogInfo("InformaciÃ³n") 'Entrega un mensaje de InformaciÃ³n
 	        'LogWarning("Warning2") 'Entrega un mensaje de Advertencia
 	        ''LogError("Error") 'Entrega un mensaje de Error
 	        'LogTestResult("Test Satisfactorio", True, "Esto quedo bien") 'Entrega un mensaje OK
@@ -1150,7 +1150,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 	        {
 	            ATTACH_OBJETO = ";;";
 	        }
-	        //'FAVC 20110819 DESAGREGACIÓN DE PARAMETROS ADICIONALES
+	        //'FAVC 20110819 DESAGREGACIÃ“N DE PARAMETROS ADICIONALES
             //'******************************************************************
             arrParametroAdicional = strParametroAdicional.split(";");
             if (arrParametroAdicional.length > 1)
@@ -1234,7 +1234,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 	                  
                 	}
                 	else
-                		Mdl_Variables.P_Tipo_Log = 1; //'FAVC20110809 Instrucción necesaria para evitar que salga con error cuando no encuentre un mensaje de error
+                		Mdl_Variables.P_Tipo_Log = 1; //'FAVC20110809 InstrucciÃ³n necesaria para evitar que salga con error cuando no encuentre un mensaje de error
                 
                 }
                 arrObj = null;
@@ -1247,7 +1247,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
             	Mdl_Variables.Rst_Mensaje.previous();
                 while (Mdl_Variables.Rst_Mensaje.next() && Bool_Acierto == false)
                 {
-                    if (Mdl_Variables.Rst_Mensaje.getString("MENSAJE").toUpperCase().trim().contentEquals(Mdl_Variables.Str_Mensaje.toUpperCase().trim())) //'encontró el mensaje
+                    if (Mdl_Variables.Rst_Mensaje.getString("MENSAJE").toUpperCase().trim().contentEquals(Mdl_Variables.Str_Mensaje.toUpperCase().trim())) //'encontrÃ³ el mensaje
                     {
                         if (Mdl_Variables.Rst_Mensaje.getString("INFORMACION").contentEquals("False") && Mdl_Variables.Rst_Mensaje.getString("VALIDACION").contentEquals("False") && Mdl_Variables.Rst_Mensaje.getString("ERROR").contentEquals("False"))
                         {
@@ -1315,10 +1315,10 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
                 }
                 
                 
-                //'FAVC20110824 Este fragmento de código se encarga que los mensajes de acierto o error se presenten en las evidencias
-                //'Documento las asignaciones a la variable P_Tipo_Log, porque ya viene seteada en líneas anteriores
+                //'FAVC20110824 Este fragmento de cÃ³digo se encarga que los mensajes de acierto o error se presenten en las evidencias
+                //'Documento las asignaciones a la variable P_Tipo_Log, porque ya viene seteada en lÃ­neas anteriores
 
-                //'EVALUAR EL RESULTADO RESPECTO A LA ORIENTACIÓN DE CASO DE PRUEBA
+                //'EVALUAR EL RESULTADO RESPECTO A LA ORIENTACIÃ“N DE CASO DE PRUEBA
                 if (Bool_Acierto == false && Mdl_Variables.Str_Mensaje != "" && Mdl_Variables.Descripcion_Acierto_Error == "" && Mdl_Variables.Rst_Tabla.getString("ACIERTO_ERROR") == "-1") 
                 {
                 	Mdl_Variables.Descripcion_Acierto_Error = Mdl_Variables.Rst_Tabla.getString("DESCRIPCION_ACIERTO");
@@ -1347,7 +1347,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 	    }
     }
 	
-	//WMN20150323: Se agrega la funcion generar_html2, por estandarización de las evidencias en el cliente.
+	//WMN20150323: Se agrega la funcion generar_html2, por estandarizaciÃ³n de las evidencias en el cliente.
 		public static void Generar_HTML2(String strAutomatizador, String strResponsable) throws SQLException{
 			// CAA_2013-02-04 Begin
 			Mdl_Variables.Ruta_Evidencia = Mdl_Variables.Ruta_Aplicativo + "\\" + Mdl_Variables.Vrb_VersionAplicativo + "\\" + Mdl_Variables.P_Str_Ciclo ;
@@ -1548,12 +1548,12 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 		        MyFile_Screen.println("<TR ALIGN=CENTER><TD COLSPAN=2><a href='http://www.choucairtesting.com/' title='Visita Choucair Software Testing'><IMG SRC='logo.jpg'></a></TD></TR>");
 		        MyFile_Screen.println("<TR><TD><b>Escenario:</b> </TD><TD>" + Mdl_Variables.P_Str_Tabla + "</TD></TR>");
 		        MyFile_Screen.println("<TR><TD><b>Nombre de script:</b> </TD><TD>" + Mdl_Variables.P_Str_Tabla + "</TD></TR>");
-		        MyFile_Screen.println("<TR><TD><b>Versión:</b></TD><TD>" + Mdl_Variables.Vrb_VersionAplicativo + "</TD></TR>");
+		        MyFile_Screen.println("<TR><TD><b>VersiÃ³n:</b></TD><TD>" + Mdl_Variables.Vrb_VersionAplicativo + "</TD></TR>");
 		        MyFile_Screen.println("<TR><TD><b>Corrida:</b></TD><TD>" + Mdl_Variables.P_Str_Ciclo + "</TD></TR>");
 		        MyFile_Screen.println("<TR><TD><b>Automatizador:</b> </TD><TD>" + strAutomatizador + "</TD></TR>");
 		        MyFile_Screen.println("<TR><TD><b>Fecha y hora de la ejecucion: </b> </TD><TD> " + strFecha +  " </TD></TR>");
-		        MyFile_Screen.println("<TR><TD><b>Executable o Link de la aplicación: </b> </TD><TD> " + Mdl_Variables.Tipo_Aplicativo + " </TD></TR>");
-		        MyFile_Screen.println("<TR><TD><b>Arquitecto de Automatización:</b> </TD><TD>" + strResponsable + "</TD></TR>");
+		        MyFile_Screen.println("<TR><TD><b>Executable o Link de la aplicaciÃ³n: </b> </TD><TD> " + Mdl_Variables.Tipo_Aplicativo + " </TD></TR>");
+		        MyFile_Screen.println("<TR><TD><b>Arquitecto de AutomatizaciÃ³n:</b> </TD><TD>" + strResponsable + "</TD></TR>");
 		        
 		        strVrbDtTotalCasos = "SELECT COUNT(DISTINCT INDICE) AS TOTAL_CASOS FROM TBL_LOG_DETALLE DE INNER JOIN  TBL_LOG_MAESTRO MA ON MA.ID_MAESTRO = DE.ID_MAESTRO WHERE  MA.NOMBRE_TABLA like '" + Mdl_Variables.P_Str_Tabla + "' AND DE.CICLO like '" + Mdl_Variables.P_Str_Ciclo + "' AND DE.VERSION ='" + Mdl_Variables.Vrb_VersionAplicativo + "' ";
 		        Statement stmtstrVrbDtTotalCasos = Mdl_Variables.Cnn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -1566,7 +1566,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 		        
 		        Mdl_Variables.RST_EVIDENCIA.close();
 		        
-		        MyFile_Screen.println("<TR ALIGN=center><TD COLSPAN=2><b><a name='MENU'>RESUMEN EJECUCIÓN</a></b></TD></TR>");
+		        MyFile_Screen.println("<TR ALIGN=center><TD COLSPAN=2><b><a name='MENU'>RESUMEN EJECUCIÃ“N</a></b></TD></TR>");
 		        MyFile_Screen.println("<TR><TD><b>TOTAL CASOS EJECUTADOS:</b> </TD><TD>" + intVrbTotalCasos + "</TD></TR>");
 		        
 		        strVrbDtConteoAciertos = "SELECT  DISTINCT(INDICE) FROM TBL_LOG_DETALLE WHERE ID_MAESTRO IN (SELECT ID_MAESTRO FROM TBL_LOG_MAESTRO WHERE NOMBRE_TABLA like '" + Mdl_Variables.P_Str_Tabla + "' AND CICLO like '" + Mdl_Variables.P_Str_Ciclo + "' AND VERSION = '" + Mdl_Variables.Vrb_VersionAplicativo + "'AND INDICE NOT IN (SELECT INDICE FROM TBL_LOG_DETALLE DET WHERE ID_MAESTRO IN (SELECT ID_MAESTRO FROM TBL_LOG_MAESTRO WHERE NOMBRE_TABLA like '" + Mdl_Variables.P_Str_Tabla + "' )AND DET.TIPO_LOG IN(2,4,6)AND DET.CICLO like '" + Mdl_Variables.P_Str_Ciclo + "'AND DET.VERSION = '" + Mdl_Variables.Vrb_VersionAplicativo + "')) ORDER BY INDICE";
@@ -1664,11 +1664,11 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 		        
 		        if (intTiempoTotalEscenario == 0)
 		        {
-		        	MyFile_Screen.println("<TR><TD><b>TOTAL TIEMPO EJECUCIÓN:</b></TD><TD> 0h 0m 0s </TD></TR>");
+		        	MyFile_Screen.println("<TR><TD><b>TOTAL TIEMPO EJECUCIÃ“N:</b></TD><TD> 0h 0m 0s </TD></TR>");
 		        }    
 		        else
 		        {
-		        	MyFile_Screen.println("<TR><TD><b>TOTAL TIEMPO EJECUCIÓN:</b></TD><TD>" + String.valueOf((intTiempoTotalEscenario / 3600)) + "h" + String.valueOf((intTiempoTotalEscenario % 3600) / 60) + "m" + String.valueOf((intTiempoTotalEscenario % 3600) % 60) + "s" + "</TD></TR>");
+		        	MyFile_Screen.println("<TR><TD><b>TOTAL TIEMPO EJECUCIÃ“N:</b></TD><TD>" + String.valueOf((intTiempoTotalEscenario / 3600)) + "h" + String.valueOf((intTiempoTotalEscenario % 3600) / 60) + "m" + String.valueOf((intTiempoTotalEscenario % 3600) % 60) + "s" + "</TD></TR>");
 		        }
 		                
 		        if (Mdl_Variables.P_Str_Modulo.toUpperCase() != "MIGRACION") 
@@ -1742,7 +1742,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 		                MyFile_Screen.println("<img src=\"Grande.bmp\" border=\"0\" width=\"40\" height=\"40\"></a>");
 
 		                MyFile_Screen.println("<a href=\"#\" onmouseover=\"zoom(139,100,'a" + intContador + "','restore')\" style=\"color: #000000; text-decoration: none\">");
-		                MyFile_Screen.println("<img src=\"Pequeño.bmp\" border=\"0\" width=\"30\" height=\"30\"></a>");
+		                MyFile_Screen.println("<img src=\"PequeÃ±o.bmp\" border=\"0\" width=\"30\" height=\"30\"></a>");
 		                MyFile_Screen.println("<TR>");
 		                MyFile_Screen.println("<TD> <img name='a" + intContador + "' src='" + Mdl_Variables.RST_EVIDENCIA.getString("IMAGEN") + "' align='left' border='1' hspace='0' vspace='0' width='250' height='200'></p>");
 		                MyFile_Screen.println("</table>");
@@ -1753,7 +1753,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 		            MyFile_Screen.println("<td valign='top'>");
 		            MyFile_Screen.println("<TABLE WIDTH='1000' border='0' cellspacing='0' cellpadding='4' class='formatoTexto'>");
 		            MyFile_Screen.println("<TR>");
-		            MyFile_Screen.println("<TD><b><div align=center>INFORMACIÓN CASO DE PRUEBA</b></div>");
+		            MyFile_Screen.println("<TD><b><div align=center>INFORMACIÃ“N CASO DE PRUEBA</b></div>");
 		            
 		            Statement stmtstrVrbDtConteoAciertos4 = Mdl_Variables.Cnn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		        	Mdl_Variables.RST_DESCRIPCION_EVIDENCIA = stmtstrVrbDtConteoAciertos4.executeQuery("SELECT *, CASE WHEN ACIERTO_ERROR = '-1' THEN 'ACIERTO' ELSE 'ERROR' END AS ORIENTACION_CASO FROM " + Mdl_Variables.P_Str_Tabla + "_D WHERE ID_CASO = '" + intCasoActual + "'");
@@ -1795,7 +1795,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 			            }
 			           
 			            MyFile_Screen.println("<TR><TD><b>TIEMPO_EJECUCION_CASO: </b>" + String.valueOf(intTiempoExecCaso / 3600) + "h" + String.valueOf((intTiempoExecCaso % 3600) / 60)  + "m" + String.valueOf((intTiempoExecCaso % 3600) % 60) + "s");
-			            MyFile_Screen.println("<TR><TD><b><a href='#MENU'>REGRESAR RESUMEN EJECUCIÓN</a>");
+			            MyFile_Screen.println("<TR><TD><b><a href='#MENU'>REGRESAR RESUMEN EJECUCIÃ“N</a>");
 		
 			            MyFile_Screen.println("<TR><TD><b><p><a href='javascript:;' onclick='PrintThisDiv('" + intCasoActual + "')' id='imprime'>IMPRIMIR</a></p>");
 		 	        }
@@ -1846,7 +1846,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 					 {
 						intCasoActual = Integer.parseInt(Mdl_Variables.RST_EVIDENCIA.getString("INDICE"));
 						MyFile_Screen.println("<TABLE border='0' class='formatoTexto'  cellpadding='5' cellspacing='0'>");
-	                    if ((Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG") != "EVIDENCIA DE PRUEBA: PRINT DE LOS DATOS INGRESADOS") && (Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG") != "EVIDENCIA DE PRUEBA:") && (Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG") != "") && (Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG")) != "EVIDENCIA DE PRUEBA: (0) -" && Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG").toUpperCase().contains("Failed to find the attach name:") == true && Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG").toUpperCase().contains("MENSAGEM") == true && Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG").toUpperCase().contains("Línea evaluada:") == true && Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG").toUpperCase().contains("EVIDENCIA DE PRUEBA: Evidencia de Prueba") == true)
+	                    if ((Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG") != "EVIDENCIA DE PRUEBA: PRINT DE LOS DATOS INGRESADOS") && (Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG") != "EVIDENCIA DE PRUEBA:") && (Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG") != "") && (Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG")) != "EVIDENCIA DE PRUEBA: (0) -" && Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG").toUpperCase().contains("Failed to find the attach name:") == true && Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG").toUpperCase().contains("MENSAGEM") == true && Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG").toUpperCase().contains("LÃ­nea evaluada:") == true && Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG").toUpperCase().contains("EVIDENCIA DE PRUEBA: Evidencia de Prueba") == true)
 	                    {
 	                    	MyFile_Screen.println("<TR><TD><b>" + Mdl_Variables.RST_EVIDENCIA.getString("MENSAJE_LOG").replace("<", "<>") + "</b>");
 	                    } 
@@ -1861,7 +1861,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 	                    MyFile_Screen.println("<img src='Grande.bmp' border='0' width='40' height='40'></a>");
 
 	                    MyFile_Screen.println("<a href='#' onmouseover=\"zoom(139,100,'a" + intContador + "','restore')\" style='color: #000000; text-decoration: none'>");
-	                    MyFile_Screen.println("<img src='Pequeño.bmp' border='0' width='30' height='30'></a>");
+	                    MyFile_Screen.println("<img src='PequeÃ±o.bmp' border='0' width='30' height='30'></a>");
 	                    MyFile_Screen.println("<TR>");
 	                    MyFile_Screen.println("<TD> <img name='a" + intContador + "' src='" + Mdl_Variables.RST_EVIDENCIA.getString("IMAGEN") + "' align='left' border='1' hspace='0' vspace='0' width='250' height='200'></p>");
 	                    MyFile_Screen.println("</table>");
@@ -1872,7 +1872,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 	                MyFile_Screen.println("<td valign='top'>");
 	                MyFile_Screen.println("<TABLE WIDTH='1000' border='0' cellspacing='0' cellpadding='4' class='formatoTexto'>");
 	                MyFile_Screen.println("<TR>");
-	                MyFile_Screen.println("<TD><b><div align=center>INFORMACIÓN CASO DE PRUEBA</b></div>");
+	                MyFile_Screen.println("<TD><b><div align=center>INFORMACIÃ“N CASO DE PRUEBA</b></div>");
 	                
 	                Statement stmtstrVrbDtConteoErrores4 = Mdl_Variables.Cnn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	                //*************WMN*-******* Se modifica querie
@@ -1899,7 +1899,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 		                int intTiempoExecCaso1;
 			            intTiempoExecCaso1 = Integer.parseInt(Mdl_Variables.RST_DESCRIPCION_EVIDENCIA.getString("TIEMPO_EJECUCION_CASO"));
 			            MyFile_Screen.println("<TR><TD><b>TIEMPO_EJECUCION_CASO: </b>" + String.valueOf(intTiempoExecCaso1 / 3600) + "h" + String.valueOf((intTiempoExecCaso1 % 3600) / 60)  + "m" + String.valueOf((intTiempoExecCaso1 % 3600) % 60) + "s");
-		                MyFile_Screen.println("<TR><TD><b><a href='#MENU'>REGRESAR RESUMEN EJECUCIÓN</a>");
+		                MyFile_Screen.println("<TR><TD><b><a href='#MENU'>REGRESAR RESUMEN EJECUCIÃ“N</a>");
 		                MyFile_Screen.println("<TR><TD><b><p><a href='javascript:;' onclick='PrintThisDiv('" + intCasoActual + "')' id='imprime'>IMPRIMIR</a></p>");
 		              
 		 	        }
@@ -1952,7 +1952,7 @@ public static void CADENA_PASOS(String desc_paso) throws SQLException
 
 		}
 		//********************************************************************
-		//WMN20150401: Se modifica la función para que almacene los datos en la evidencia.
+		//WMN20150401: Se modifica la funciÃ³n para que almacene los datos en la evidencia.
 		public static void CADENA_PASOS(String strPasos) throws SQLException
 		{
 			

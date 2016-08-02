@@ -32,7 +32,7 @@ import org.openqa.selenium.firefox.*;
 import Pck_Choucair.Mdl_Choucair.Funciones_Ch;
 
 /**
- * Clase que se encarga de la gestiÛn de las ejecuciones
+ * Clase que se encarga de la gesti√≥n de las ejecuciones
  *
  */
 public class Web_Framework 
@@ -42,7 +42,7 @@ public class Web_Framework
 	{
 		check,	context,	fw_cliente,	fw_ch, fw_tuya, fw_bnet,
 		launchapp,	loop,	msgbox,	navigate,	perform, safari, ie, chrome, firefox,
-		presskeys,	presskeys_as400,	textexist,	wait, novalue;
+		presskeys,	presskeys_as400,	textexist,	wait, novalue; 
 		public static Keyword getValue(String str)
 	    {
 	        try {
@@ -155,7 +155,7 @@ public class Web_Framework
         	Mdl_Variables.Rst_Coordenadas.absolute(0);
         	
 			
-			//SE ADICIONA PARA LIMPIAR EL DESIGN_STEP DEL CASO A EJECUTAR CON RESPECTO A LA EJECUCI”N ANTERIOR
+			//SE ADICIONA PARA LIMPIAR EL DESIGN_STEP DEL CASO A EJECUTAR CON RESPECTO A LA EJECUCI√ìN ANTERIOR
 		    	String desc_paso = "";
 		    	Mdl_Evidenciamiento.CADENA_PASOS(desc_paso);  
 
@@ -217,7 +217,7 @@ public class Web_Framework
 	}
  
     /**
-     * Procedimiento encargado de la ejecuciÛn de un paso en especÌfico.
+     * Procedimiento encargado de la ejecuci√≥n de un paso en espec√≠fico.
      * 
      * @throws Exception
      */
@@ -284,7 +284,7 @@ public class Web_Framework
 					Mdl_Variables.boolAction = 1;
 					return;
             	}
-			}
+			}	
             
 			switch (Keyword.getValue(Mdl_Variables.initial.toLowerCase()))	
 			{
@@ -323,12 +323,9 @@ public class Web_Framework
 //					}
 //					else
 //					{
-						try{
-							if(GetValue(Mdl_Variables.Rst_Coordenadas.getString("ACTION_VALUE1")).equalsIgnoreCase("click") || GetValue(Mdl_Variables.Rst_Coordenadas.getString("ACTION_VALUE1")).isEmpty()){//modif-13052016-RVO
-								Thread.sleep(Integer.parseInt(Mdl_Variables.arrAction[0]) * 1000);
-							}
-						}catch(Throwable e){}
-
+						try{Thread.sleep(Integer.parseInt(Mdl_Variables.arrAction[0])*1000);}catch(Throwable e){}
+						
+						
 						//Mdl_Variables.strPasosEvidencia = "Se realiza la espera de "+Mdl_Variables.arrAction[0]+" segundos.";
 						//Mdl_Evidenciamiento.CADENA_PASOS(Mdl_Variables.strPasosEvidencia);
 						
@@ -361,9 +358,9 @@ public class Web_Framework
 		}
 		catch(Exception e) 
 		{
-			System.out.println("(Web_Framework - Keyword_Web) Se presentÛ un error: " + e.getMessage());
+			System.out.println("(Web_Framework - Keyword_Web) Se present√≥ un error: " + e.getMessage());
 			e.printStackTrace();
-			Mdl_Evidenciamiento.Evidencia_Log(false, " Keyword_Web - " + Mdl_Variables.initial + " - Paso N˙mero: " + Mdl_Variables.Rst_Coordenadas.getString("ID"));
+			Mdl_Evidenciamiento.Evidencia_Log(false, " Keyword_Web - " + Mdl_Variables.initial + " - Paso N√∫mero: " + Mdl_Variables.Rst_Coordenadas.getString("ID"));
 			Mdl_Evidenciamiento.Ingreso_Datos_Log();
 			Mdl_Variables.boolAction = 0;
 		}
@@ -434,7 +431,7 @@ public class Web_Framework
 					}
 					break;
 				case novalue:
-					System.out.println("(Web_Framework - Func_ObjectSet) No se encontrÛ el id");
+					System.out.println("(Web_Framework - Func_ObjectSet) No se encontr√≥ el id");
 					Mdl_Evidenciamiento.Evidencia_Log(false, "");
 					Mdl_Evidenciamiento.Ingreso_Datos_Log();
 					Mdl_Variables.boolAction = 0;
@@ -471,16 +468,16 @@ public class Web_Framework
 			}*/	
 			
 			/*-------------------------------------------------------------------------------------------------
-			FAVC20120103 Identificar si el valor que trae del datapool corresponde a la funciÛn checkproperty
-			if(Mdl_Variables.arrkeyindex.length > 0){ //se espera que el segundo par·metro contenga una de las palabras claves
+			FAVC20120103 Identificar si el valor que trae del datapool corresponde a la funci√≥n checkproperty
+			if(Mdl_Variables.arrkeyindex.length > 0){ //se espera que el segundo par√°metro contenga una de las palabras claves
 			En la tabla de pasos se debe poner 
 			Action: perform
 			 object: tipo_objeto;id_objeto (ej: label;dto_LBL_TEXTO)
-			ACTION_VALUE1 : instrucciÛn a ejecutar (ej:dt_LBL_TEXTO las instrucciones se manejan desde la tabla de datos)
+			ACTION_VALUE1 : instrucci√≥n a ejecutar (ej:dt_LBL_TEXTO las instrucciones se manejan desde la tabla de datos)
 			En la tabla de datos se debe enviar checkproperty|propiedad:valor
 			Donde checkproperty es palabra clave y siempre debe ir
 			propiedad es la propiedad que se quiere validar del objeto (ver Func_Check)
-			y valor es el dato para hacer la validaciÛn
+			y valor es el dato para hacer la validaci√≥n
 			ej: checkproperty|text:Cuentas de ahorro valida que el label LBL_TEXTO diga Cuentas de ahorro
 			*/
 			for(int i = 0 ; i < arrKeyValue.length ; i++){
@@ -488,7 +485,7 @@ public class Web_Framework
 				if(arrKeyValue[i].toLowerCase().contains("checkproperty")){
 					arrKeyValue = Mdl_Choucair.getProperty(arrKeyValue);
 					if(arrKeyValue == null){
-						System.out.println("(Web_Framework - Func_Perform) OcurriÛ un error validando el checkproperty");
+						System.out.println("(Web_Framework - Func_Perform) Ocurri√≥ un error validando el checkproperty");
 						Mdl_Evidenciamiento.Evidencia_Log(false,  "");
 						Mdl_Evidenciamiento.Ingreso_Datos_Log();
 						Mdl_Variables.boolAction = 0;
@@ -520,7 +517,7 @@ public class Web_Framework
 						//se valida que no hay alert activos
 						Mdl_Variables.driver.switchTo().alert();
 					}catch(NoAlertPresentException e){
-						//Se elimina lo que est· despuÈs del # en el link
+						//Se elimina lo que est√° despu√©s del # en el link
 						if(Mdl_Variables.driver.getCurrentUrl().contains("#guider=")){
 							Mdl_Variables.driver.get(Mdl_Variables.driver.getCurrentUrl().split("#")[0]);
 						}
@@ -556,7 +553,7 @@ public class Web_Framework
 						Mdl_Variables.objPerform.sendKeys(String.valueOf(dato)); 
 					}else if (arrKeyValue[1].split(",")[0].toString().toLowerCase().contentEquals("texto"))
 					{
-						//Se compone en Actio_Value1 por |random:texto,10| donde 10 es el n˙mero de caracteres
+						//Se compone en Actio_Value1 por |random:texto,10| donde 10 es el n√∫mero de caracteres
 						Mdl_Keyboard Keyboard2= new Mdl_Keyboard();
 		        		Random r = new Random();
 		        	    String alphabet = "abcdefghijkl,mopqrstuvwxyz";
@@ -666,6 +663,9 @@ public class Web_Framework
 					Mdl_Variables.objPerform.sendKeys(arrKeyValue[1]);
 					Mdl_Variables.boolAction = 1;
 					return;
+				default:
+					return;
+				
 			}
 		}
 		catch(Throwable ex)
@@ -681,7 +681,7 @@ public class Web_Framework
 			{
 				Datos_Script += " - " + GetValue(Mdl_Variables.arrKeyValue[inti]);
 			}
-			System.out.println("(Web_Framework - Func_Perform) datos: arrKeyValue[0]= " + arrKeyValue[0] + "  Y  arrKeyValue[1]= " + arrKeyValue[1] + ".  OcurriÛ un error en la ejecuciÛn: " + ex.getMessage());
+			System.out.println("(Web_Framework - Func_Perform) datos: arrKeyValue[0]= " + arrKeyValue[0] + "  Y  arrKeyValue[1]= " + arrKeyValue[1] + ".  Ocurri√≥ un error en la ejecuci√≥n: " + ex.getMessage());
 			Mdl_Evidenciamiento.Evidencia_Log(false,  " Func_Perform " + Datos_Script);
 			Mdl_Evidenciamiento.Ingreso_Datos_Log();
 			Mdl_Variables.boolAction = 0;
@@ -756,7 +756,7 @@ public class Web_Framework
 					}
 					else
 					{
-						desc_paso = "<b><FONT COLOR='RED'>No se comparÛ correctamente el valor: "+arrKeyValue[1]+" en el campo "+Mdl_Variables.strNombreObjeto+"</font></b>";
+						desc_paso = "<b><FONT COLOR='RED'>No se compar√≥ correctamente el valor: "+arrKeyValue[1]+" en el campo "+Mdl_Variables.strNombreObjeto+"</font></b>";
 					}
 					
 					
@@ -779,11 +779,11 @@ public class Web_Framework
 						Mdl_Evidenciamiento.Evidencia_Log(false,arrKeyValue[1]+ " diferente al de pantalla "+Mdl_Variables.objPerform.getText());
 						//Mdl_Evidenciamiento.Ingreso_Datos_Log();
 						
-						desc_paso = "NO se comparÛ correctamente, el valor en DataDriven es: "+arrKeyValue[1]+" y el valor en pantalla es: "+ Mdl_Variables.objPerform.getText();
+						desc_paso = "NO se compar√≥ correctamente, el valor en DataDriven es: "+arrKeyValue[1]+" y el valor en pantalla es: "+ Mdl_Variables.objPerform.getText();
 						System.out.println(desc_paso);
 											}
 					else
-						desc_paso = "Se comparÛ correctamente el valor del DataDriven "+"'"+arrKeyValue[1]+"'"+ " con el valor en el Objeto :"+ Mdl_Variables.objPerform.getText();
+						desc_paso = "Se compar√≥ correctamente el valor del DataDriven "+"'"+arrKeyValue[1]+"'"+ " con el valor en el Objeto :"+ Mdl_Variables.objPerform.getText();
 					
 					
 					
@@ -908,6 +908,7 @@ public class Web_Framework
 					//INTERNET EXPLORER
 					//Para SO de 32 bits:
 					//File iedriver = new File("lib/selenium-2.28.0/IEDriverServer 32/IEDriverServer.exe");
+					Thread.sleep(3000);
 					File iedriver = new File("lib/IEDriverServer.exe");
 					
 					//Para SO de 64 bits:

@@ -18,7 +18,7 @@ public class Porperties
     		prop.setProperty ( "dbuser" , "sa" ) ; 
     		prop.setProperty ( "dbpassword" , "sql2005" ) ;
 
-    		//save properties to project root folder / / Guardar propiedades para proyectar carpeta raíz
+    		//save properties to project root folder / / Guardar propiedades para proyectar carpeta raÃ­z
     		prop. store ( new FileOutputStream ( "config.properties" ) , null ) ; 
 
     	} catch ( IOException ex ) { 

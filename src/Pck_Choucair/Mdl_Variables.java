@@ -40,7 +40,7 @@ public abstract class Mdl_Variables {
 	public static String strActval1= null;
 	public static String strActval2= null;
 
-	//Conexión
+	//ConexiÃ³n
     public static String Tipo_Aplicativo= null;
     public static String Str_Conexion= null;
     public static Connection Cnn = null;
@@ -69,7 +69,7 @@ public abstract class Mdl_Variables {
     public static ResultSet Rst_MNTSistema = null; 
     public static ResultSet Rst_Script = null; 
 	public static ResultSet Rst_Aplicativo = null;
-	public static int intCaso=0; //Variable para mantener el caso de la generación de un consecutivo en el cual se actulizara el escenario
+	public static int intCaso=0; //Variable para mantener el caso de la generaciÃ³n de un consecutivo en el cual se actulizara el escenario
 
 	//Datos del computador
     public static String P_Str_NombreMaquina= null;

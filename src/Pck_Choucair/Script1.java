@@ -1,31 +1,39 @@
 package Pck_Choucair;
 //WebDriver
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
 
-public class Script1{
-    public static void main(String[] arg) throws Exception{
+public class Script1 {
+
+	
+    public static void main(String[] arg) throws Exception 
+    {
 		//Asignaciones
     	//Mdl_Variables.StrIexplorePath = "C:\\Archivos de programa\\Internet Explorer\\iexplore.exe ";
 		//Mdl_Variables.StrIexplorePath = "C:\\Archivos de programa\\Mozilla Firefox\\firefox.exe";
 		//Mdl_Variables.P_Str_Base_Datos_SOcr = "Z: \\DB_SERVIDOR_OCR\\DB_SERVIDOR_OCR.mdb";
 		//Mdl_Variables.Ruta_Aplicativo= "C:\\Evidencia";
-		Mdl_Variables.Ruta_Aplicativo= "\\\\NBK-416\\Documentos\\Evidencias";
-    	//Mdl_Variables.Ruta_Aplicativo= "D:\\CHOUCAIR\\BNET"; //
-		//*****Configuraci髇*****
-
-		while(true){
-			//Carga la informaci髇 del schedule
+		//Mdl_Variables.Ruta_Aplicativo= "\\CHOUCAIR\\BNET";
+    	Mdl_Variables.Ruta_Aplicativo= "\\\\NBK-416\\Documentos\\Evidencias"; 
+    	//Mdl_Variables.Ruta_Aplicativo= "D:\\CHOUCAIR\\BNET";
+		
+		//*****Configuraci贸n*****
+		while(true)
+		{
+			//Carga la informaci贸n del schedule
 		//	Mdl_Sufi.Conectar();
 			Mdl_Datapool.Schedule("BBVA_BNET" ,"SQL", "", "sa", "sql2005", "NBK-416\\SQLEXPRESS");
-
-			//Validaci髇 de escenarios pendientes por ejecuci髇
-
-			if(Mdl_Variables.blnpendiente){
+																		
+			//Validaci贸n de escenarios pendientes por ejecuci贸n
+			if (Mdl_Variables.blnpendiente)
+			{
 				//Cierra pantallas para iniciar con un sistema limpio
 				Mdl_Choucair.Cerrar_Pantallas();
-				// Conecta al datapool "Ciclo", "Versi髇", "LimpiarDP","Tipo Ejecuci髇"
+				// Conecta al datapool "Ciclo", "Versi贸n", "LimpiarDP","Tipo Ejecuci贸n"
 				Mdl_Datapool.Conectar_Sql(Mdl_Variables.P_Str_Ciclo,Mdl_Variables.P_Str_Nombre_Version, Mdl_Variables.P_Bln_Limpia_Casos, Mdl_Variables.P_Str_Tipo_Ejecucion);
 
-				//Ejecuci髇 de los scripts
+
+				//Ejecuci贸n de los scripts
 				Web_Framework.Keyword_Drive();
 				//Cierra pantallas para iniciar con un sistema limpio
 				Mdl_Choucair.Cerrar_Pantallas();
@@ -36,11 +44,10 @@ public class Script1{
 				
 				Mdl_Evidenciamiento.Ingreso_Datos_Historia();
 			}
-
 			// Cierra Sql y deja el sistema limpio
 			Mdl_Datapool.Desconectar_Sql();
-			//***Fin Configuraci髇***
-break;	//EJECUCI覰 INFINITA - 11/05/2016 - ROMER VARGAS
+			//***Fin Configuraci贸n***
+			break; 
 		}
 	}
 
